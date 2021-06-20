@@ -2,7 +2,11 @@ package app;
 
 import app.customer.registerCustomerRouter
 import app.customer.router.getCustomers
+import app.patient.appointments.Finder
+import app.patient.registerPatientRouter
+import app.patient.router.getAppointments
 import app.singup.registerSignupRouter
+import id.Id
 
 import io.ktor.application.*
 import io.ktor.response.*
@@ -22,16 +26,13 @@ fun Application.module(testing: Boolean = false) {
 
     routing {
         route("/api") {
-            route("/customers2") {
-                getCustomers()
+            route("/patient") {
+                route("/appointments") {
+                    getAppointments()
+                }
             }
         }
 
-        registerSignupRouter()
-        registerCustomerRouter()
-    }
-
-    routing {
         get("/") {
             call.respondText("HELLO WORLD!", contentType = ContentType.Text.Plain)
         }
