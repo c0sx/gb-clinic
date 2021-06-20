@@ -3,6 +3,6 @@ package appointment
 import id.Id
 
 interface AppointmentsRepository {
-    fun getByMedicalCard(cardId: Id): Appointments;
-    fun save(appointment: PatientAppointments);
+    fun get(medicalCardId: Id, doctorId: Id): Appointments;
+    fun save(appointment: Appointments);
 }
