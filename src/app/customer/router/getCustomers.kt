@@ -1,4 +1,4 @@
-package ru.gbclinic.customer.router
+package app.customer.router
 
 import io.ktor.application.*
 import io.ktor.response.*

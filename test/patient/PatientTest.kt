@@ -1,6 +1,8 @@
-package ru.gbclinic.patient
+package patient
 
-import ru.gbclinic.id.Id
+import id.Id
+import patient.Patient
+import patient.Sex
 import java.time.LocalDate
 
 import java.util.*

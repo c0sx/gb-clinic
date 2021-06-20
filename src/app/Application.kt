@@ -1,8 +1,8 @@
-package ru.gbclinic
+package app;
 
-import ru.gbclinic.customer.registerCustomerRouter
-import ru.gbclinic.customer.router.getCustomers
-import ru.gbclinic.singup.registerSignupRouter
+import app.customer.registerCustomerRouter
+import app.customer.router.getCustomers
+import app.singup.registerSignupRouter
 
 import io.ktor.application.*
 import io.ktor.response.*
@@ -13,7 +13,7 @@ import io.ktor.features.*
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
-fun Application.module() {
+fun Application.module(testing: Boolean = false) {
     install(ContentNegotiation) {
         gson {
 

@@ -1,4 +1,4 @@
-package ru.gbclinic.singup
+package app.singup
 
 import io.ktor.routing.*
 import io.ktor.application.*

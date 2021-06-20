@@ -1,6 +1,6 @@
-package ru.gbclinic.doctor
+package doctor
 
-import ru.gbclinic.id.Id
+import id.Id
 
 data class Doctor(
     public val id: Id,

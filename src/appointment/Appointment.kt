@@ -1,9 +1,9 @@
-package ru.gbclinic.appointment;
+package appointment;
 
-import ru.gbclinic.doctor.Doctor
-import ru.gbclinic.id.Id;
-import ru.gbclinic.medicalcard.MedicalCard
-import ru.gbclinic.medicalcard.MedicalRecord
+import doctor.Doctor
+import id.Id;
+import medicalcard.MedicalCard
+import medicalcard.MedicalRecord
 
 import java.util.*
 

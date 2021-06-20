@@ -1,7 +1,8 @@
-package ru.gbclinic.medicalcard
+package medicalcard
 
-import ru.gbclinic.doctor.Doctor
-import ru.gbclinic.id.Id
+import id.Id
+import medicalcard.MedicalHistory
+import medicalcard.MedicalRecord
 
 import java.util.*
 import org.junit.Test
@@ -21,8 +22,7 @@ internal class MedicalHistoryTest {
     @Test
     fun addMedicalRecord() {
         val office = 200;
-        val doctor = Doctor(Id("id"), "Surname", "Name", office);
-        val record = MedicalRecord(Id("id"), "Record", Date(), doctor);
+        val record = MedicalRecord(Id("id"), "Record", Date(), Id("doctorId"));
 
         assertEquals(0, history.size())
         history.add(record);

@@ -1,4 +1,4 @@
-package ru.gbclinic.medicalcard
+package medicalcard
 
 class MedicalHistory(list: List<MedicalRecord>) {
     private val records: MutableList<MedicalRecord> = list.toMutableList();

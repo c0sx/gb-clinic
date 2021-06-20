@@ -1,4 +1,4 @@
-package ru.gbclinic.patient
+package patient
 
 enum class Sex {
     Male,

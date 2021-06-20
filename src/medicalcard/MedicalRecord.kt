@@ -1,6 +1,6 @@
-package ru.gbclinic.medicalcard
+package medicalcard
 
-import ru.gbclinic.id.Id
+import id.Id
 
 import java.util.*
 

@@ -1,7 +1,7 @@
-package ru.gbclinic.medicalcard;
+package medicalcard;
 
-import ru.gbclinic.id.Id;
-import ru.gbclinic.patient.Patient;
+import id.Id;
+import patient.Patient;
 
 class MedicalCard(
     private val id: Id,

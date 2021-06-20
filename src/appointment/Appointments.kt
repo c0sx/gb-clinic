@@ -1,4 +1,4 @@
-package ru.gbclinic.appointment
+package appointment
 
 class Appointments(list: List<Appointment>) {
     private val appointments = list.toMutableList();

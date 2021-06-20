@@ -4,4 +4,4 @@ RUN mkdir /app
 COPY ./build/install/gbclinic/ /app/
 WORKDIR /app/bin
 
-CMD ["./gb"]
+CMD ["./gbclinic"]

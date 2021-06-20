@@ -1,4 +1,4 @@
-package ru.gbclinic.id;
+package id;
 
 class Id (private val id: String) {
     private fun value(): String = id;

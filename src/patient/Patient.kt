@@ -1,6 +1,6 @@
-package ru.gbclinic.patient;
+package patient;
 
-import ru.gbclinic.id.Id;
+import id.Id;
 
 import java.time.LocalDate;
 import java.time.Period;
