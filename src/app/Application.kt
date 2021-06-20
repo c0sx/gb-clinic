@@ -1,8 +1,8 @@
-package com.example
+package ru.gbclinic
 
-import com.example.customer.registerCustomerRouter
-import com.example.customer.router.getCustomers
-import com.example.singup.registerSignupRouter
+import ru.gbclinic.customer.registerCustomerRouter
+import ru.gbclinic.customer.router.getCustomers
+import ru.gbclinic.singup.registerSignupRouter
 
 import io.ktor.application.*
 import io.ktor.response.*

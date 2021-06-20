@@ -1,4 +1,4 @@
-package com.example.customer
+package ru.gbclinic.customer
 
 import kotlinx.serialization.Serializable
 

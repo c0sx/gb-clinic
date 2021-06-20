@@ -1,4 +1,4 @@
-package com.example.customer.router
+package ru.gbclinic.customer.router
 
 import io.ktor.application.*
 import io.ktor.response.*
