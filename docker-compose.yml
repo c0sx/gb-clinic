@@ -16,6 +16,6 @@ services:
     depends_on:
       - app
     volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/gb.conf:ro,cached
+      - ./nginx.conf:/etc/nginx/conf.d/gb-clinic.conf:ro,cached
       - ./public:/usr/share/nginx/html/public:ro,cached
     command: [nginx-debug, '-g', 'daemon off;']
