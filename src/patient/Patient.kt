@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.*;
 
-data class Patient(
+class Patient(
     public val id: Id,
     public val surname: String,
     public val name: String,
