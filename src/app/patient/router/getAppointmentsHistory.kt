@@ -8,7 +8,7 @@ import io.ktor.routing.*
 
 
 fun Route.getAppointmentsHistory() {
-    get {
+    get("/api/patient/appointments/history") {
         val finder = Finder()
 
         call.respond(finder.getAppointmentsHistory(Id("patientId")))

@@ -12,7 +12,7 @@ import io.ktor.http.*
 import io.ktor.response.*
 
 fun Route.registerAppointment() {
-    get {
+    post("/api/patient/appointments") {
         val registrator = RegisterAppointment(
             Appointments()
         )

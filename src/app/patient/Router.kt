@@ -9,20 +9,8 @@ import io.ktor.application.*
 
 fun Application.registerPatientRouter() {
     routing {
-        route("/patient") {
-            route("/appointments") {
-                route("/") {
-                    registerAppointment()
-                }
-
-                route("/") {
-                    getAppointments()
-                }
-
-                route("/history") {
-                    getAppointmentsHistory()
-                }
-            }
-        }
+        registerAppointment()
+        getAppointments()
+        getAppointmentsHistory()
     }
 }
