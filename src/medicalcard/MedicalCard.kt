@@ -1,6 +1,6 @@
-package medicalcard;
+package medicalcard
 
-import id.Id;
+import id.Id
 
 class MedicalCard(
     private val id: Id,
@@ -8,10 +8,10 @@ class MedicalCard(
     private val history: MedicalHistory
 ) {
     public fun addMedicalRecord(record: MedicalRecord) {
-        history.add(record);
+        history.add(record)
     }
 
     public fun isEqual(medicalCard: MedicalCard): Boolean {
-        return id.isEqual(medicalCard.id);
+        return id.isEqual(medicalCard.id)
     }
 }

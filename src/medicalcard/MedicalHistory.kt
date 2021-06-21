@@ -1,13 +1,13 @@
 package medicalcard
 
-class MedicalHistory(list: List<MedicalRecord>) {
-    private val records: MutableList<MedicalRecord> = list.toMutableList();
+class MedicalHistory(records: List<MedicalRecord>) {
+    private val _records = records.toMutableList()
 
     public fun add(record: MedicalRecord) {
-        records.add(record);
+        _records.add(record)
     }
 
     public fun size(): Int {
-        return records.size
+        return _records.size
     }
 }

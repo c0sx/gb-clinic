@@ -1,13 +1,11 @@
 package app.patient.appointments.registerAppointment
 
-import appointment.Appointment
-import appointment.AppointmentsRepository
+import appointment.AppointmentData
+import appointment.Appointments
 
-class RegisterAppointment(private val repository: AppointmentsRepository) {
-    public fun register(appointment: Appointment) {
-        val appointments = repository.get(appointment.medicalCardId, appointment.doctorId);
-        appointments.register(appointment)
+class RegisterAppointment(private val repository: Appointments) {
 
-        repository.save(appointments)
+    public fun register(appointment: AppointmentData) {
+
     }
 }

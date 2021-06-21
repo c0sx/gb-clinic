@@ -1,4 +1,4 @@
-package app;
+package app
 
 import app.doctor.router.registerDoctorRouter
 import app.patient.registerPatientRouter
