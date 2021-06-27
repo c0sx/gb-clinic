@@ -1,12 +1,16 @@
 package app.reception
 
+import app.database.dao.appointments.AppointmentEntity
+import org.jetbrains.exposed.sql.transactions.transaction
 import reception.appointments.Appointment
 import reception.Appointments as ReceptionAppointments
 
 class Appointments: ReceptionAppointments {
-    private val appointments: MutableList<Appointment> = emptyList<Appointment>().toMutableList()
-
-    override fun add(appointment: Appointment) {
-        appointments.add(appointment)
+    override fun add(appointment: Appointment): Unit = transaction {
+        AppointmentEntity.new {
+            patientId = appointment.patientId().toUUID()
+            doctorId = appointment.doctorId().toUUID()
+            appointmentAt = appointment.date().toLocalDateTime()
+        }
     }
 }
