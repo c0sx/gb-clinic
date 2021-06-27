@@ -1,8 +1,8 @@
 package app.endpoint.patient.registerAppointment
 
-import app.reception.Appointments
-import app.reception.Doctors
-import app.reception.Patients
+import reception.repository.Appointments
+import reception.repository.Doctors
+import reception.repository.Patients
 
 import id.Id
 
@@ -18,7 +18,6 @@ import io.ktor.response.*
 fun Route.registerAppointment() {
     post("/api/patients/{id}/appointments") {
         val id = call.parameters["id"] ?: return@post call.respond(HttpStatusCode.BadRequest)
-
         val data = call.receive<RegisterAppointmentData>()
 
         val registry = RegisterAppointment(

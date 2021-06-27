@@ -54,4 +54,23 @@ internal class ReceptionTest {
 
         assertEquals(appointment.date().date, expected.date)
     }
+
+    @Test
+    fun registerTest() {
+        val patientId = Id("cbc183ed-b285-4642-a3d8-d96925165dd3")
+        val date = Calendar
+            .getInstance()
+            .apply {
+                set(2021, 6, 15, 16, 30)
+            }
+            .time
+
+        val doctorId = Id("b5350385-d87d-4b17-8864-92701b65de1d")
+        val patient = Patient(patientId, emptyList())
+        val doctor = Doctor(doctorId, emptyList())
+        val reception = Reception(patient, doctor)
+
+        val appointment = reception.register(patientId, doctorId, RegisterDate(date))
+        assertEquals(true, true)
+    }
 }

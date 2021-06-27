@@ -1,4 +1,4 @@
-package app.reception
+package reception.repository
 
 import app.database.dao.appointments.AppointmentEntity
 import app.database.dao.appointments.Appointments

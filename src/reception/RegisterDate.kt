@@ -26,7 +26,7 @@ class RegisterDate(date: Date) {
             calendar.get(Calendar.MONTH),
             calendar.get(Calendar.DAY_OF_MONTH),
             calendar.get(Calendar.HOUR),
-            calendar.get(Calendar.MINUTE),
+            calendar.get(Calendar.MINUTE)
         )
     }
 
