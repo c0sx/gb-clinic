@@ -14,6 +14,8 @@ import io.ktor.application.*
 import io.ktor.http.*
 import io.ktor.request.*
 import io.ktor.response.*
+import java.time.LocalDateTime
+import java.time.ZoneId
 
 fun Route.registerAppointment() {
     post("/api/patients/{id}/appointments") {
@@ -26,7 +28,8 @@ fun Route.registerAppointment() {
             Appointments()
         )
 
-        registry.register(Id(id), Id(data.doctorId), RegisterDate(data.date))
+        val local = LocalDateTime.ofInstant(data.date.toInstant(), ZoneId.systemDefault())
+        registry.register(Id(id), Id(data.doctorId), RegisterDate(local))
 
         call.respond(HttpStatusCode.OK)
     }

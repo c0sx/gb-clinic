@@ -10,7 +10,7 @@ class Appointments: ReceptionAppointments {
         AppointmentEntity.new {
             patientId = appointment.patientId().toUUID()
             doctorId = appointment.doctorId().toUUID()
-            appointmentAt = appointment.date().toLocalDateTime()
+            appointmentAt = appointment.date().date
         }
     }
 }

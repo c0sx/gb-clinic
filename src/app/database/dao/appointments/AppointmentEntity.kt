@@ -1,7 +1,5 @@
 package app.database.dao.appointments
 
-import app.database.dao.doctors.DoctorEntity
-import app.database.dao.doctors.Doctors
 import org.jetbrains.exposed.dao.UUIDEntity
 import org.jetbrains.exposed.dao.UUIDEntityClass
 import org.jetbrains.exposed.dao.id.EntityID

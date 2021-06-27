@@ -31,7 +31,7 @@ class Doctors: ReceptionDoctors {
                 Appointment(
                     Id(appointment.patientId.toString()),
                     Id(appointment.doctorId.toString()),
-                    RegisterDate.fromLocalDateTime(appointment.appointmentAt)
+                    RegisterDate(appointment.appointmentAt)
                 )
             }
         )
