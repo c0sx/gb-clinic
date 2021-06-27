@@ -1,6 +1,5 @@
 package app
 
-import app.doctor.router.registerDoctorRouter
 import app.patient.registerPatientRouter
 
 import io.ktor.application.*
@@ -10,7 +9,7 @@ import io.ktor.features.*
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
-fun Application.module(testing: Boolean = false) {
+fun Application.module() {
     install(ContentNegotiation) {
         gson {
 
@@ -19,7 +18,6 @@ fun Application.module(testing: Boolean = false) {
 
     routing {
         registerPatientRouter()
-        registerDoctorRouter()
     }
 }
 
