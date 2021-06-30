@@ -5,7 +5,7 @@ import app.endpoint.reception.doctors.newDoctor.newDoctor
 import io.ktor.application.*
 import io.ktor.routing.*
 
-fun Application.registerReceptionRouter() {
+fun Application.receptionRouter() {
     routing {
         newDoctor()
         getDoctors()
