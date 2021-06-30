@@ -18,7 +18,7 @@ import java.time.LocalDateTime
 import java.time.ZoneId
 
 fun Route.registerAppointment() {
-    post("/api/patients/{id}/appointments") {
+    post("/api/patients/appointments") {
         val id = call.parameters["id"] ?: return@post call.respond(HttpStatusCode.BadRequest)
         val data = call.receive<RegisterAppointmentData>()
 

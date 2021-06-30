@@ -5,5 +5,8 @@ import java.util.*
 
 data class DoctorsResponse(
     @Expose
-    public val uuid: UUID
+    public val id: UUID,
+    public val surname: String,
+    public val name: String,
+    public val middlename: String?
 )

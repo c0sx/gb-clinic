@@ -12,7 +12,7 @@ import java.time.ZoneId
 import java.util.*
 
 fun Route.getAppointments() {
-    get("/api/patients/{id}/appointments") {
+    get("/api/patients/appointments") {
         val id = call.parameters["id"] ?: return@get call.respond(HttpStatusCode.BadRequest)
 
         val appointments = transaction {
