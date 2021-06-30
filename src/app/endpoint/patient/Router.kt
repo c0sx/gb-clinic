@@ -1,4 +1,4 @@
-package app.patient
+package app.endpoint
 
 import app.endpoint.patient.getAppointments.getAppointments
 import app.endpoint.patient.getDoctors.getDoctors

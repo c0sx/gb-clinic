@@ -4,7 +4,7 @@ import id.Id
 import org.junit.Test
 import reception.RegisterDate
 import reception.appointments.Appointment
-import java.util.*
+import java.time.LocalDateTime
 import kotlin.test.BeforeTest
 import kotlin.test.assertFails
 
@@ -27,25 +27,16 @@ internal class DoctorTest {
 
         assertFails {
             val wrongDoctorId = Id("doctorId2")
-            doctor.register(Appointment(patientId, wrongDoctorId, RegisterDate(Date())))
+            doctor.register(Appointment(patientId, wrongDoctorId, RegisterDate(
+                LocalDateTime.of(2021, 10, 10, 15, 30, 10)
+            )))
         }
     }
 
     @Test
     fun throwOnDoctorIsBusyForAppointmentDate() {
-        val firstAppointment = Calendar
-            .getInstance()
-            .apply {
-                set(2021, 10, 10, 15, 30)
-            }
-            .time
-
-        val secondAppointment = Calendar
-            .getInstance()
-            .apply {
-                set(2021, 10, 10, 16, 0)
-            }
-            .time
+        val firstAppointment = LocalDateTime.of(2021, 10, 10, 15, 30, 20)
+        val secondAppointment = LocalDateTime.of(2021, 10, 10, 16, 0, 10)
 
         val doctor = Doctor(
             doctorId,

@@ -1,15 +1,15 @@
 package reception.patient
 
 import id.Id
+import org.junit.Test
+import org.junit.jupiter.api.BeforeEach
 import reception.appointments.Appointment
-
-import java.util.*
 
 import kotlin.test.BeforeTest
 import kotlin.test.assertFails
 
-import org.junit.Test
 import reception.RegisterDate
+import java.time.LocalDateTime
 
 internal class PatientTest {
     private lateinit var patientId: Id
@@ -30,18 +30,14 @@ internal class PatientTest {
 
         assertFails {
             val wrongPatientId = Id("patientId2")
-            patient.register(Appointment(wrongPatientId, doctorId, RegisterDate(Date())))
+            val date = LocalDateTime.of(2021, 6, 6, 15, 13, 10)
+            patient.register(Appointment(wrongPatientId, doctorId, RegisterDate(date)))
         }
     }
 
     @Test
     fun throwOnPatientAlreadyRegisteredOnDate() {
-        val date = Calendar
-            .getInstance()
-            .apply {
-                set(2021, 10, 10, 15, 30)
-            }
-            .time
+        val date = LocalDateTime.of(2021, 10, 10, 15, 30, 59)
 
         val patient = Patient(
             patientId,

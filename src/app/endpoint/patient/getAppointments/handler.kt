@@ -7,10 +7,8 @@ import io.ktor.application.*
 import io.ktor.http.*
 import io.ktor.response.*
 import org.jetbrains.exposed.sql.select
-import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 import java.time.ZoneId
-import java.time.ZoneOffset
 import java.util.*
 
 fun Route.getAppointments() {

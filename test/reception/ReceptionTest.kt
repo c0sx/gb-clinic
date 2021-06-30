@@ -5,6 +5,7 @@ import org.junit.Test
 import reception.doctor.Doctor
 import reception.patient.Patient
 import reception.reception.Reception
+import java.time.LocalDateTime
 import java.util.*
 import kotlin.test.BeforeTest
 import kotlin.test.assertEquals
@@ -34,43 +35,13 @@ internal class ReceptionTest {
 
     @Test
     fun register() {
-        val date = Calendar
-            .getInstance()
-            .apply {
-                set(2021, 6, 15, 16, 30)
-            }
-            .time
-
+        val date = LocalDateTime.of(2021, 6, 15, 16, 30, 10)
         val appointment = reception.register(patientId, doctorId, RegisterDate(date))
 
         val expected = RegisterDate(
-            Calendar
-                .getInstance()
-                .apply {
-                    set(2021, 6, 15, 16, 30)
-                }
-                .time
+            LocalDateTime.of(2021, 6, 15, 16, 30, 44)
         )
 
         assertEquals(appointment.date().date, expected.date)
-    }
-
-    @Test
-    fun registerTest() {
-        val patientId = Id("cbc183ed-b285-4642-a3d8-d96925165dd3")
-        val date = Calendar
-            .getInstance()
-            .apply {
-                set(2021, 6, 15, 16, 30)
-            }
-            .time
-
-        val doctorId = Id("b5350385-d87d-4b17-8864-92701b65de1d")
-        val patient = Patient(patientId, emptyList())
-        val doctor = Doctor(doctorId, emptyList())
-        val reception = Reception(patient, doctor)
-
-        val appointment = reception.register(patientId, doctorId, RegisterDate(date))
-        assertEquals(true, true)
     }
 }

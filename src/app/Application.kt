@@ -1,7 +1,8 @@
 package app
 
 import app.database.initDatabase
-import app.patient.registerPatientRouter
+import app.endpoint.registerPatientRouter
+import app.endpoint.reception.registerReceptionRouter
 import app.serialize.deserialize
 import app.serialize.serialize
 
@@ -25,6 +26,7 @@ fun Application.module() {
 
     routing {
         registerPatientRouter()
+        registerReceptionRouter()
     }
 }
 

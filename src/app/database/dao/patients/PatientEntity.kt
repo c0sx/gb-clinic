@@ -9,7 +9,5 @@ class PatientEntity(id: EntityID<UUID>): UUIDEntity(id) {
     companion object: UUIDEntityClass<PatientEntity>(Patients)
 
     var userId by Patients.userId
-    var surname by Patients.surname
-    var name by Patients.name
     var dateOfBirth by Patients.dateOfBirth
 }
