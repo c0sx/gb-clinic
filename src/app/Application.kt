@@ -1,8 +1,10 @@
 package app
 
 import app.auth.UserSession
+import app.auth.tryAuthenticate
 import app.database.initDatabase
-import app.endpoint.patientRouter
+import app.endpoint.doctor.doctorRouter
+import app.endpoint.patient.patientRouter
 import app.endpoint.reception.receptionRouter
 import app.serialize.deserialize
 import app.serialize.serialize
@@ -22,18 +24,15 @@ fun Application.module() {
     initDatabase()
 
     install(Sessions) {
-        cookie<UserSession>("user_session")
+        cookie<UserSession>("auth-cookie", storage = SessionStorageMemory())
     }
 
     install(Authentication) {
         session<UserSession>("auth-session") {
             validate {
-                if (it.id.startsWith("123")) {
-                    it
-                } else {
-                    null
-                }
+                it
             }
+
             challenge {
                 call.respond(UnauthorizedResponse())
             }
@@ -48,10 +47,9 @@ fun Application.module() {
     }
 
     routing {
-        authenticate("auth-session") {
-            patientRouter()
-            receptionRouter()
-        }
+        patientRouter()
+        receptionRouter()
+        doctorRouter()
     }
 }
 

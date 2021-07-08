@@ -1,9 +1,7 @@
-package app.endpoint.patient.getAppointments
+package app.endpoint.doctor.getAppointments
 
-import app.auth.UserSession
 import java.time.ZoneId
 import java.util.*
-
 import io.ktor.routing.*
 import io.ktor.application.*
 import io.ktor.http.*
@@ -13,16 +11,15 @@ import org.jetbrains.exposed.sql.transactions.transaction
 
 import app.database.dao.appointments.AppointmentEntity
 import app.database.dao.appointments.Appointments
-import io.ktor.sessions.*
 
 fun Route.getAppointments() {
-    get("/api/patients/appointments") {
-        val id = call.sessions.get<UserSession>()?.id ?: return@get call.respond(HttpStatusCode.BadRequest)
+    get("/api/doctors/appointments") {
+        val id = call.parameters["id"] ?: return@get call.respond(HttpStatusCode.BadRequest)
 
         val appointments = transaction {
             Appointments
                 .select {
-                    Appointments.patientId eq UUID.fromString(id)
+                    Appointments.doctorId eq UUID.fromString(id)
                 }
                 .iterator()
                 .asSequence()
@@ -30,7 +27,7 @@ fun Route.getAppointments() {
                 .map {
                     val row = AppointmentEntity.wrapRow(it)
                     AppointmentsResponse(
-                        row.doctorId,
+                        row.patientId,
                         Date.from(row.appointmentAt.atZone(ZoneId.systemDefault()).toInstant())
                     )
                 }

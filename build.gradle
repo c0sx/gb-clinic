@@ -41,6 +41,7 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-java-time:$exposedVersion")
 
+    implementation "at.favre.lib:bcrypt:0.9.0"
     implementation "com.impossibl.pgjdbc-ng:pgjdbc-ng:0.8.9"
     implementation "org.flywaydb:flyway-core:7.10.0"
 

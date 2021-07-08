@@ -11,4 +11,6 @@ class UserEntity(id: EntityID<UUID>): UUIDEntity(id) {
     var surname by Users.surname
     var name by Users.name
     var middlename by Users.middlename
+    var username by Users.username
+    var password by Users.password
 }

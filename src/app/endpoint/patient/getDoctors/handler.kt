@@ -13,6 +13,7 @@ import org.jetbrains.exposed.sql.transactions.transaction
 
 fun Route.getDoctors() {
     get("/api/patients/doctors") {
+
         val doctors = transaction {
             Doctors
                 .innerJoin(Users)

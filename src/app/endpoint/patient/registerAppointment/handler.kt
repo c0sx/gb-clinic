@@ -1,5 +1,6 @@
 package app.endpoint.patient.registerAppointment
 
+import app.auth.UserSession
 import reception.repository.Appointments
 import reception.repository.Doctors
 import reception.repository.Patients
@@ -14,12 +15,13 @@ import io.ktor.application.*
 import io.ktor.http.*
 import io.ktor.request.*
 import io.ktor.response.*
+import io.ktor.sessions.*
 import java.time.LocalDateTime
 import java.time.ZoneId
 
 fun Route.registerAppointment() {
     post("/api/patients/appointments") {
-        val id = call.parameters["id"] ?: return@post call.respond(HttpStatusCode.BadRequest)
+        val id = call.sessions.get<UserSession>()?.id ?: return@post call.respond(HttpStatusCode.BadRequest)
         val data = call.receive<RegisterAppointmentData>()
 
         val registry = RegisterAppointment(
