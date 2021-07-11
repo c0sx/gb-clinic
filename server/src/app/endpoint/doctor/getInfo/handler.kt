@@ -2,6 +2,7 @@ package app.endpoint.doctor.getInfo
 
 import app.endpoint.doctor.DoctorSession
 import app.database.dao.doctors.DoctorEntity
+import app.endpoint.patient.getInfo.PatientResponse
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.http.*
@@ -21,7 +22,7 @@ fun Route.getDoctorInfo() {
         if (doctor == null) {
             call.respond(UnauthorizedResponse())
         } else {
-            call.respond(DoctorResponse(doctor.id.value))
+            call.respond(PatientResponse(doctor.id.value))
         }
     }
 }

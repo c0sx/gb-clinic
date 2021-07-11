@@ -13,7 +13,7 @@ export const Initialize = () => {
 
     useEffect(() => {
         if (doctorId) {
-            history.replace("/appointments")
+            history.replace("/doctor/appointments")
         }
     }, [history, doctorId])
 
@@ -21,7 +21,7 @@ export const Initialize = () => {
         (async () => {
             try {
                 await getInfo()
-                history.replace("/appointments")
+                history.replace("/doctor/appointments")
             }
             catch (e) {
                 setGuest(true);
@@ -32,8 +32,8 @@ export const Initialize = () => {
     return (
         <>
             <div>Загрузка...</div>
-            {isGuest ? <Link to={"/sign-in"}>Вход</Link> : null}
-            {doctorId ? <a href={"/sign-in"} onClick={signOut}>Выход</a> : null}
+            {isGuest ? <Link to={"/doctor/sign-in"}>Вход</Link> : null}
+            {doctorId ? <a href={"/doctor/sign-in"} onClick={signOut}>Выход</a> : null}
         </>
     )
 }

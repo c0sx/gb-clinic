@@ -20,7 +20,7 @@ function* signInWorker(action) {
     }
 
     yield put(actions.fillUser({ id: response.id }))
-    document.location.href = "/"
+    document.location.href = "/doctor"
 }
 
 export function* signInWatcher() {

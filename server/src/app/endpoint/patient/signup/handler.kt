@@ -12,7 +12,7 @@ import org.jetbrains.exposed.sql.transactions.transaction
 import java.time.ZoneId
 
 fun Route.signup() {
-    post("/api/patients/signup") {
+    post("/api/patient/sign-up") {
         val data = call.receive<SignupData>()
         val pwd = Password.hash(data.password)
 
@@ -24,6 +24,7 @@ fun Route.signup() {
                 password = pwd.hash
             }
 
+            println(data);
             val local = data.dateOfBirth.toInstant()
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate()

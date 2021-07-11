@@ -1,6 +1,5 @@
 package app.endpoint.patient.getAppointments
 
-import app.endpoint.doctor.DoctorSession
 import java.time.ZoneId
 import java.util.*
 
@@ -13,27 +12,50 @@ import org.jetbrains.exposed.sql.transactions.transaction
 
 import app.database.dao.appointments.AppointmentEntity
 import app.database.dao.appointments.Appointments
+import app.database.dao.doctors.DoctorEntity
+import app.database.dao.doctors.Doctors
+import app.database.dao.users.UserEntity
+import app.database.dao.users.Users
+import app.endpoint.patient.PatientSession
 import io.ktor.sessions.*
 
 fun Route.getAppointments() {
-    get("/api/patients/appointments") {
-        val id = call.sessions.get<DoctorSession>()?.id ?: return@get call.respond(HttpStatusCode.BadRequest)
+    get("/api/patient/appointments") {
+        val id = call.sessions.get<PatientSession>()?.id ?: return@get call.respond(HttpStatusCode.BadRequest)
 
         val appointments = transaction {
-            Appointments
+            val rows = Appointments
                 .select {
                     Appointments.patientId eq UUID.fromString(id)
                 }
-                .iterator()
-                .asSequence()
-                .toList()
-                .map {
-                    val row = AppointmentEntity.wrapRow(it)
-                    AppointmentsResponse(
-                        row.doctorId,
-                        Date.from(row.appointmentAt.atZone(ZoneId.systemDefault()).toInstant())
-                    )
+                .map { AppointmentEntity.wrapRow(it) }
+
+            val ids = rows.map { it.doctorId }
+            val doctors = Doctors
+                .select {
+                    Doctors.id inList ids
                 }
+                .map {
+                    DoctorEntity.wrapRow(it)
+                }
+
+            val users = Users
+                .select {
+                    Users.id inList doctors.map { it.userId }
+                }
+                .map { UserEntity.wrapRow(it) }
+
+            rows.map { row ->
+                val doctor = doctors.find { it.id.value == row.doctorId }
+                val user = users.find { it.id.value == doctor?.userId }
+
+                AppointmentsResponse(
+                    row.doctorId,
+                    user?.surname ?: "",
+                    user?.name ?: "",
+                    Date.from(row.appointmentAt.atZone(ZoneId.systemDefault()).toInstant())
+                )
+            }
         }
 
         call.respond(appointments)

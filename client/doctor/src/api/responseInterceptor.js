@@ -4,7 +4,7 @@ export const interceptResponse = response => {
 
 export const intercept401 = response => {
     if (response.status === 401) {
-        document.location.href = "/sign-in"
+        document.location.href = "/doctor/sign-in"
         return false;
     }
 

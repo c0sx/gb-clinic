@@ -12,8 +12,6 @@ services:
       - DATABASE_PASSWORD=6xKQ9Puqi7yPTaDbWTrN
     depends_on:
       - db
-    volumes:
-      - ./build/install/gbclinic:/app/
     expose:
       - 8080
     command: "./gbclinic"
@@ -45,7 +43,7 @@ services:
     depends_on:
       - app
     volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/clinic.conf:ro,cached
+      - ./nginx.conf:/etc/nginx/conf.d/gbclinic.conf:ro,cached
       - ../public:/usr/share/nginx/html/public:ro,cached
     command: [nginx-debug, '-g', 'daemon off;']
 

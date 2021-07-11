@@ -1,11 +1,11 @@
 package app.endpoint.patient.signin
 
 import app.auth.Password
-import app.endpoint.doctor.DoctorSession
 import app.database.dao.patients.PatientEntity
 import app.database.dao.patients.Patients
 import app.database.dao.users.UserEntity
 import app.database.dao.users.Users
+import app.endpoint.patient.PatientSession
 import io.ktor.application.*
 import io.ktor.routing.*
 import io.ktor.auth.*
@@ -16,7 +16,7 @@ import io.ktor.sessions.*
 import org.jetbrains.exposed.sql.transactions.transaction
 
 fun Route.singin() {
-    post("/api/patients/signin") {
+    post("/api/patient/sign-in") {
         val data = call.receive<SigninData>()
 
         val patient = transaction {
@@ -41,7 +41,7 @@ fun Route.singin() {
         if (patient == null) {
             call.respond(UnauthorizedResponse())
         } else {
-            val session = DoctorSession(patient.userId.toString())
+            val session = PatientSession(patient.id.toString())
             call.sessions.set(session)
             call.respond(HttpStatusCode.OK)
         }

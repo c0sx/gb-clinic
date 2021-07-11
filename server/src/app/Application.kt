@@ -1,6 +1,7 @@
 package app
 
 import app.database.dao.doctors.DoctorEntity
+import app.database.dao.patients.PatientEntity
 import app.endpoint.doctor.DoctorSession
 import app.database.initDatabase
 import app.endpoint.doctor.doctorRouter
@@ -34,6 +35,7 @@ fun Application.module() {
 
     install(Sessions) {
         cookie<DoctorSession>("doctor-cookie", storage = SessionStorageMemory())
+        cookie<PatientSession>("patient-cookie", storage = SessionStorageMemory())
     }
 
     install(Authentication) {
@@ -57,7 +59,15 @@ fun Application.module() {
 
         session<PatientSession>("patient-session") {
             validate {
-                it
+                val patient = transaction {
+                    PatientEntity.findById(UUID.fromString(it.id))
+                }
+
+                if (patient != null) {
+                    it
+                } else {
+                    null
+                }
             }
 
             challenge {

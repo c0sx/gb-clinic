@@ -1,6 +1,7 @@
 package app.endpoint.patient.registerAppointment
 
 import app.endpoint.doctor.DoctorSession
+import app.endpoint.patient.PatientSession
 import reception.repository.Appointments
 import reception.repository.Doctors
 import reception.repository.Patients
@@ -20,8 +21,8 @@ import java.time.LocalDateTime
 import java.time.ZoneId
 
 fun Route.registerAppointment() {
-    post("/api/patients/appointments") {
-        val id = call.sessions.get<DoctorSession>()?.id ?: return@post call.respond(HttpStatusCode.BadRequest)
+    post("/api/patient/appointments") {
+        val id = call.sessions.get<PatientSession>()?.id ?: return@post call.respond(HttpStatusCode.BadRequest)
         val data = call.receive<RegisterAppointmentData>()
 
         val registry = RegisterAppointment(

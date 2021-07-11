@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { format } from "date-fns";
 
 import { getAppointmentsAsync } from "../saga/getAppointmentsAsync";
 import { selectAppointments } from "../store/appointments/selectors";
@@ -19,15 +20,16 @@ export const Appointments = () => {
 
     return (
         <div>
-            {doctorId ? <a href={"/sign-in"} onClick={signOut}>Выход</a> : null}
+            {doctorId ? <a href={"/doctor/sign-in"} onClick={signOut}>Выход</a> : null}
             {appointments.length > 0 ?
                 (
                     <ul>
                         {appointments.map(one => (
-                            <li>
+                            <li key={one.id}>
                                 <div>
-                                    {one.patient.name}
-                                    {one.patient.date}
+                                    {one.surname}
+                                    {one.name}
+                                    {format(one.date, "dd.MM.yyyy HH:mm")}
                                 </div>
                             </li>
                         ))}
